@@ -4,16 +4,37 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SimonPeter.dev — Software Engineer</title>
+    <meta name="description" content="SimonPeter — Software Engineer from Kisii, Kenya. Full-stack, AI & ML, databases and design systems. Dream in code. Build in life.">
+    <meta name="theme-color" content="#05060f">
+    <meta property="og:title" content="SimonPeter.dev — Software Engineer">
+    <meta property="og:description" content="Full-stack, AI & ML, databases and design systems. Dream in code. Build in life.">
+    <meta property="og:image" content="https://simonpeterw.github.io/Simon.dev/File%20(480).jpg">
+    <meta property="og:url" content="https://simonpeterw.github.io/Simon.dev/">
     <link rel="icon" href="./de.JPG">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
-    <title>SimonPeter.dev</title>
-    
 </head>
 
 <body>
-    <header>
-        <nav class="container">
-            <div class="logo">@Simon.dev</div>
+    <!-- galaxy background -->
+    <canvas id="galaxy" aria-hidden="true"></canvas>
+    <div class="grid-overlay" aria-hidden="true"></div>
+    <div class="cursor-glow" id="cursorGlow" aria-hidden="true"></div>
+    <div class="scroll-progress" id="scrollProgress"></div>
+
+    <!-- boot loader -->
+    <div class="loader" id="loader">
+        <div class="loader-inner">
+            <span class="loader-prompt">simon@dev:~$</span> <span id="loaderText"></span><span class="caret">▋</span>
+        </div>
+    </div>
+
+    <header id="header">
+        <nav class="nav">
+            <a href="#home" class="logo">&lt;Simon<span>.dev</span>/&gt;</a>
             <ul class="nav-links" id="navLinks">
                 <li><a href="#home">Home</a></li>
                 <li><a href="#about">About</a></li>
@@ -21,254 +42,386 @@
                 <li><a href="#projects">Projects</a></li>
                 <li><a href="#contact">Contact</a></li>
             </ul>
-            <a href="#contact" class="hire-btn">Hire Me</a>
-            <button class="mobile-menu" id="mobileMenu">☰</button>
+            <div class="nav-actions">
+                <button class="kbd-btn" id="openPalette" aria-label="Open command palette">
+                    <span>⌘</span>K
+                </button>
+                <a href="#contact" class="btn btn-primary btn-sm magnetic">Hire Me</a>
+                <button class="mobile-menu" id="mobileMenu" aria-label="Toggle menu">
+                    <span></span><span></span>
+                </button>
+            </div>
         </nav>
     </header>
 
-
-    <!--HERO section-->
-    <section id="home" class="hero">
-        <div class="container">
-            <div class="hero-content">
-                <div class="status-badge">
-                    <span class="status-indicator"></span>
-                    Available for work
+    <main>
+        <!--HERO section-->
+        <section id="home" class="hero">
+            <div class="container hero-grid">
+                <div class="hero-content">
+                    <div class="status-badge reveal">
+                        <span class="status-indicator"></span>
+                        Available for work
+                    </div>
+                    <h1 class="hero-title reveal">
+                        <span class="hello">Hey! I'm</span>
+                        <span class="glitch" data-text="SIMONPETER">SIMONPETER</span>
+                    </h1>
+                    <p class="subtitle reveal">
+                        <span class="mono">&gt;</span> <span id="typed"></span><span class="caret">▋</span>
+                    </p>
+                    <p class="location reveal">A developer from <b>Kisii, Kenya</b> — currently a student at
+                        <b>PLP Academy</b> and <b>Kisii University</b>, building software that users love and businesses value.</p>
+                    <div class="hero-buttons reveal">
+                        <a href="#projects" class="btn btn-primary magnetic">View my work <span class="arrow">→</span></a>
+                        <a href="CV simon.docx" class="btn btn-ghost magnetic" download>Download CV ↓</a>
+                    </div>
+                    <div class="hero-meta reveal">
+                        <a href="https://github.com/SimonpeterW" target="_blank" rel="noopener">GitHub</a>
+                        <a href="https://www.linkedin.com/in/simonpeterfullstacksoftwareengineer/" target="_blank" rel="noopener">LinkedIn</a>
+                        <a href="https://leetcode.com/u/simon_peter/" target="_blank" rel="noopener">LeetCode</a>
+                        <a href="https://x.com/simonpeterfa" target="_blank" rel="noopener">X</a>
+                    </div>
                 </div>
-                <h1>HEY ! I'm SIMONPETER</h1>
-                <p class="subtitle">Software Engineer</p>
-                <p class="location">Am a Developer from Kisii, Kenya.<br>Currently a student at PLP Academy and Kisii University.</p>
-                <div class="hero-avatar">👽</div>
-                <div class="hero-buttons">
-                    <a href="#contact" class="btn btn-primary">Hire Me</a>
-                    <a href="CV simon.docx" class="btn btn-secondary" onclick="download-btn">Download CV</a>
+
+                <div class="hero-visual reveal">
+                    <div class="holo-card tilt" id="holoCard">
+                        <div class="holo-border"></div>
+                        <img src="File (480).jpg" alt="SimonPeter at GDG Kisii" class="holo-img">
+                        <div class="holo-scan"></div>
+                        <div class="holo-hud">
+                            <span>ID://SIMONPETER</span>
+                            <span class="blink">● LIVE</span>
+                        </div>
+                    </div>
+                    <div class="float-chip chip-1">📍 Kisii, Kenya</div>
+                    <div class="float-chip chip-2">⚡ AI &amp; ML</div>
+                    <div class="float-chip chip-3">&lt;/&gt; Full-stack</div>
                 </div>
             </div>
-            
-        </div>
-        <div class="quote">SLOGAN: Dream in code. Build in life
-            <p></p>
-        </div>
-    </section>
 
+            <div class="quote reveal">
+                <span class="mono">// SLOGAN</span> Dream in code. <em>Build in life.</em>
+            </div>
 
-    <!--ABOUT-->
-    <section id="about" class="about">
-        <div class="container">
-            <h2 class="section-title">About Me</h2>
-            <div class="about-content">
-                <div class="about-text">
-                    <p>I'm a passionate software developer. creating digital solutions that
-                        solve real-world problems.  I specialize in <b>design
-                        systems, AI & ML, UI, Db and Back-end intergration.</b>I deliver
-                        Software that users love and businesses value.</p>
-                    
+            <a href="#about" class="scroll-hint" aria-label="Scroll down"><span></span></a>
+        </section>
 
-                    <p>When I'm not coding, you can find me learning new languages, or Playing Basketball. <br>
-                    RATE MY HOBBIES!
-                <!-- Audio Player Component -->
-
-                <!-- currently taking korean lessons not yet there but when i can speak clearly this feature will come to life-->
-
-
-                <div class="media-component">
-                    <button id="audioBtn" onclick="playAudio()">🎵 Play Audio</button>
-                    <audio id="audioPlayer" preload="none">
-                        <source src="https://www.soundjay.com/misc/sounds/bell-ringing-05.wav" type="audio/wav">
-                    </audio>
-                    <div class="rating">
-                        <span onclick="rate('audio', 1)">⭐</span>
-                        <span onclick="rate('audio', 2)">⭐</span>
-                        <span onclick="rate('audio', 3)">⭐</span>
-                        <span onclick="rate('audio', 4)">⭐</span>
-                        <span onclick="rate('audio', 5)">⭐</span>
-                        <span id="audioRating">Rate Audio</span>
-                    </div>
-                </div>                
-                
-              
-                
-                
-                <!-- Video Player Component -->
-                <div class="media-component">
-                    <button id="videoBtn" onclick="toggleVideo()">🎬 Play Video</button>
-                    <video id="videoPlayer" style="display:none" width="400" height="300">
-                        <source src="basketball.mp4" type="video/mp4">
-                    </video>
-                    <div class="rating">
-                        <span onclick="rate('video', 1)">⭐</span>
-                        <span onclick="rate('video', 2)">⭐</span>
-                        <span onclick="rate('video', 3)">⭐</span>
-                        <span onclick="rate('video', 4)">⭐</span>
-                        <span onclick="rate('video', 5)">⭐</span>
-                        <span id="videoRating">Rate Video</span>
-                    </div>
-                </div>
-                </p>
-                    <div class="stats">
-                        <div class="stat">
-                            <div class="stat-number">1.5+</div>
-                            <div class="stat-label">Years Experience</div>
-                        </div>
-                        <div class="stat">
-                            <div class="stat-number">40+</div>
-                            <div class="stat-label">Projects Completed</div>
-                        </div>
-                        <div class="stat">
-                            <div class="stat-number">50+</div>
-                            <div class="stat-label">Happy Clients</div>
-                        </div>
-                        <div class="stat">
-                            <div class="stat-number">20+</div>
-                            <div class="stat-label">Awards Won</div>
-                        </div>
-                    </div>
-                </div>
-                <div class="about-image">
-                    <div
-                        style="width: 100%; height: 700px; border-radius: 20px; background-image: url(./File\ \(480\).jpg); background-size: cover; background-position: left; display: flex; align-items: center; justify-content: center; font-size: 4rem; color: white;">
-                        </div>
-                </div>
+        <!-- tech marquee -->
+        <div class="marquee" aria-label="Tech stack">
+            <div class="marquee-track">
+                <span>JavaScript</span><span>TypeScript</span><span>React</span><span>React Native</span><span>Node.js</span><span>Express</span><span>Python</span><span>Django</span><span>MySQL</span><span>MongoDB</span><span>MariaDB</span><span>Tailwind</span><span>AI &amp; ML</span><span>Git</span>
+                <span>JavaScript</span><span>TypeScript</span><span>React</span><span>React Native</span><span>Node.js</span><span>Express</span><span>Python</span><span>Django</span><span>MySQL</span><span>MongoDB</span><span>MariaDB</span><span>Tailwind</span><span>AI &amp; ML</span><span>Git</span>
             </div>
         </div>
-    </section>
 
-    <!--SERVICES-->
-    <section id="services" class="services">
-        <div class="container">
-            <h2 class="section-title">Services</h2>
-            <div class="services-grid">
-                <div class="service-card">
-                    <div class="service-icon">🎨</div>
-                    <h3>Database Design</h3>
-                    <p>Creating Creating best models for user data ensuring security and efficiency.<br><b>MySQL,Mongo, MariaDb</b></p>
+        <!--ABOUT-->
+        <section id="about" class="section">
+            <div class="container">
+                <div class="section-head reveal">
+                    <span class="section-index">01</span>
+                    <h2 class="section-title">About Me</h2>
+                    <div class="section-line"></div>
                 </div>
-                <div class="service-card">
-                    <div class="service-icon">📱</div>
-                    <h3>Mobile Design</h3>
-                    <p>Designing responsive mobile applications that work seamlessly across iOS and Android platforms
-                        with pixel-perfect precision.<br><b>React Native</b></p>
-                </div>
-                <div class="service-card">
-                    <div class="service-icon">🌐</div>
-                    <h3>Web Design</h3>
-                    <p>Building modern, responsive websites that convert visitors into customers with clean design and
-                        optimal user flow.<br><b>HTML, CSS, JavaScript, React,Tailwind </b></p>
-                </div>
-                <div class="service-card">
-                    <div class="service-icon">🔍</div>
-                    <h3>User Research</h3>
-                    <p>Conducting comprehensive user research to understand your audience and create problem solving solutions.<br><b>Documentatio & Research paper Writing</b></p>
-                </div>
-                <div class="service-card">
-                    <div class="service-icon">⚡</div>
-                    <h3>AI & ML</h3>
-                    <p>Creating and Automating Real World Problem solving solutions through AI. Fun fact I happed to have participated in multiple google AI trainigs. Check my linked in for more</p>
-                </div>
-                <div class="service-card">
-                    <div class="service-icon">🎯</div>
-                    <h3>Back-end Dev</h3>
-                    <p>Developing software Logic in the backend. Through the Latest and best technologies.<br><b>Node.js, express, python, Django</b></p>
-                </div>
-            </div>
-        </div>
-    </section>
 
-    <!--SERVICES-->
-    <section id="projects" class="projects">
-        <div class="container">
-            <div class="projects-header">
-                <h2 class="section-title">Projects</h2>
-                <a href="https://github.com/SimonpeterW" class="view-all">View All →</a>
-            </div>
-            <div class="projects-grid">
-                <div class="project-card">
-                    <div class="project-icon" style="background: #6366f1;">R</div>
-                    <div class="project-content">
-                        <h3>TechCorp Dashboard</h3>
-                        <p>Complete redesign of the company dashboard with improved user experience and modern interface
-                            design.</p>
-                        <div class="project-tags">
-                            <span class="tag">Product Design</span>
-                            <span class="tag">UI/UX</span>
-                            <span class="tag">Dashboard</span>
+                <div class="about-grid">
+                    <div class="terminal reveal">
+                        <div class="terminal-bar">
+                            <span class="dot r"></span><span class="dot y"></span><span class="dot g"></span>
+                            <span class="terminal-title">simon@dev: ~/about</span>
+                        </div>
+                        <div class="terminal-body">
+                            <p><span class="t-prompt">$</span> whoami</p>
+                            <p class="t-out">I'm a passionate software developer creating digital solutions that solve
+                                real-world problems. I specialize in <b>design systems, AI &amp; ML, UI, databases and
+                                back-end integration</b>. I deliver software that users love and businesses value.</p>
+                            <p><span class="t-prompt">$</span> cat hobbies.txt</p>
+                            <p class="t-out">When I'm not coding, you can find me learning new languages 🇰🇷 or playing
+                                basketball 🏀.</p>
+                            <p><span class="t-prompt">$</span> echo $MOTTO</p>
+                            <p class="t-out t-accent">"Dream in code. Build in life."</p>
+                            <p><span class="t-prompt">$</span> <span class="caret">▋</span></p>
                         </div>
                     </div>
-                </div>
-                <div class="project-card">
-                    <div class="project-icon" style="background: #333;">M</div>
-                    <div class="project-content">
-                        <h3>Mobile Banking App</h3>
-                        <p>Intuitive mobile banking application with focus on security, accessibility, and user-friendly
-                            financial management.</p>
-                        <div class="project-tags">
-                            <span class="tag">Mobile Design</span>
-                            <span class="tag">Fintech</span>
-                            <span class="tag">iOS/Android</span>
+
+                    <div class="about-side">
+                        <div class="stats">
+                            <div class="stat glass reveal">
+                                <div class="stat-number" data-count="1.5" data-suffix="+">0</div>
+                                <div class="stat-label">Years Experience</div>
+                            </div>
+                            <div class="stat glass reveal">
+                                <div class="stat-number" data-count="40" data-suffix="+">0</div>
+                                <div class="stat-label">Projects Completed</div>
+                            </div>
+                            <div class="stat glass reveal">
+                                <div class="stat-number" data-count="50" data-suffix="+">0</div>
+                                <div class="stat-label">Happy Clients</div>
+                            </div>
+                            <div class="stat glass reveal">
+                                <div class="stat-number" data-count="20" data-suffix="+">0</div>
+                                <div class="stat-label">Awards Won</div>
+                            </div>
                         </div>
-                    </div>
-                </div>
-                <div class="project-card">
-                    <div class="project-icon" style="background: #ff6b35;">S</div>
-                    <div class="project-content">
-                        <h3>E-commerce Platform</h3>
-                        <p>Modern e-commerce platform with seamless shopping experience and conversion-optimized
-                            checkout flow.</p>
-                        <div class="project-tags">
-                            <span class="tag">Web Design</span>
-                            <span class="tag">E-commerce</span>
-                            <span class="tag">Conversion</span>
+
+                        <!-- hobbies: rate them! -->
+                        <div class="hobbies glass reveal">
+                            <div class="hobbies-head">
+                                <h3>Rate my hobbies</h3>
+                                <span class="mono muted">interactive.exe</span>
+                            </div>
+
+                            <!-- currently taking korean lessons not yet there but when i can speak clearly this feature will come to life-->
+                            <div class="media-component">
+                                <button class="media-btn" id="audioBtn" onclick="playAudio()">🎵 Play Audio</button>
+                                <audio id="audioPlayer" preload="none">
+                                    <source src="https://www.soundjay.com/misc/sounds/bell-ringing-05.wav" type="audio/wav">
+                                </audio>
+                                <div class="rating" data-type="audio">
+                                    <span onclick="rate('audio', 1)">★</span>
+                                    <span onclick="rate('audio', 2)">★</span>
+                                    <span onclick="rate('audio', 3)">★</span>
+                                    <span onclick="rate('audio', 4)">★</span>
+                                    <span onclick="rate('audio', 5)">★</span>
+                                    <span class="rating-label" id="audioRating">Rate Audio</span>
+                                </div>
+                            </div>
+
+                            <div class="media-component">
+                                <button class="media-btn" id="videoBtn" onclick="toggleVideo()">🎬 Play Video</button>
+                                <div class="rating" data-type="video">
+                                    <span onclick="rate('video', 1)">★</span>
+                                    <span onclick="rate('video', 2)">★</span>
+                                    <span onclick="rate('video', 3)">★</span>
+                                    <span onclick="rate('video', 4)">★</span>
+                                    <span onclick="rate('video', 5)">★</span>
+                                    <span class="rating-label" id="videoRating">Rate Video</span>
+                                </div>
+                                <video id="videoPlayer" class="video" preload="none" playsinline controls hidden>
+                                    <source src="basketball.mp4" type="video/mp4">
+                                </video>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!--CONTACT-->
-    <section id="contact" class="contact">
-        <div class="container">
-            <h2 class="section-title">Let's Work Together</h2>
-            <p>Ready to start your next project? Let's discuss how I can help bring your ideas to life.</p>
-            <form class="contact-form" id="contactForm">
-                <div class="form-group">
-                    <label for="name">Name</label>
-                    <input type="text" id="name" name="name" placeholder="Your Name" required>
+        <!--SERVICES-->
+        <section id="services" class="section">
+            <div class="container">
+                <div class="section-head reveal">
+                    <span class="section-index">02</span>
+                    <h2 class="section-title">Services</h2>
+                    <div class="section-line"></div>
                 </div>
-                <div class="form-group">
-                    <label for="email">Email</label>
-                    <input type="email" id="email" name="email" placeholder="your@email.com" required>
+
+                <div class="bento">
+                    <article class="card spot reveal span-2">
+                        <div class="card-icon">⚡</div>
+                        <h3>AI &amp; ML</h3>
+                        <p>Creating and automating real-world problem-solving solutions through AI. Fun fact: I've
+                            participated in multiple Google AI trainings — check my LinkedIn for more.</p>
+                        <div class="tags"><span>Python</span><span>ML Models</span><span>Automation</span></div>
+                    </article>
+                    <article class="card spot reveal">
+                        <div class="card-icon">🗄️</div>
+                        <h3>Database Design</h3>
+                        <p>Creating the best models for user data, ensuring security and efficiency.</p>
+                        <div class="tags"><span>MySQL</span><span>Mongo</span><span>MariaDB</span></div>
+                    </article>
+                    <article class="card spot reveal">
+                        <div class="card-icon">🌐</div>
+                        <h3>Web Design</h3>
+                        <p>Modern, responsive websites that convert visitors into customers with clean design and optimal user flow.</p>
+                        <div class="tags"><span>HTML/CSS/JS</span><span>React</span><span>Tailwind</span></div>
+                    </article>
+                    <article class="card spot reveal">
+                        <div class="card-icon">📱</div>
+                        <h3>Mobile Design</h3>
+                        <p>Responsive mobile applications that work seamlessly across iOS and Android with pixel-perfect precision.</p>
+                        <div class="tags"><span>React Native</span></div>
+                    </article>
+                    <article class="card spot reveal">
+                        <div class="card-icon">🎯</div>
+                        <h3>Back-end Dev</h3>
+                        <p>Developing software logic in the back end with the latest and best technologies.</p>
+                        <div class="tags"><span>Node.js</span><span>Express</span><span>Django</span></div>
+                    </article>
+                    <article class="card spot reveal span-2">
+                        <div class="card-icon">🔍</div>
+                        <h3>User Research</h3>
+                        <p>Comprehensive user research to understand your audience and create problem-solving solutions —
+                            backed by solid documentation and research paper writing.</p>
+                        <div class="tags"><span>Documentation</span><span>Research Papers</span><span>UX</span></div>
+                    </article>
                 </div>
-                <div class="form-group">
-                    <label for="project">Project Type</label>
-                    <input type="text" id="project" name="project" placeholder="UI/UX Design, Web Design, etc."
-                        required>
+            </div>
+        </section>
+
+        <!--PROJECTS-->
+        <section id="projects" class="section">
+            <div class="container">
+                <div class="section-head reveal">
+                    <span class="section-index">03</span>
+                    <h2 class="section-title">Projects</h2>
+                    <div class="section-line"></div>
+                    <a href="https://github.com/SimonpeterW" class="view-all" target="_blank" rel="noopener">View All →</a>
                 </div>
-                <div class="form-group">
-                    <label for="message">Message</label>
-                    <textarea id="message" name="message" rows="5" placeholder="Tell me about your project..."
-                        required></textarea>
+
+                <div class="projects-grid">
+                    <article class="project spot tilt reveal featured">
+                        <div class="project-top">
+                            <span class="project-badge">● Live</span>
+                            <span class="mono muted">TypeScript</span>
+                        </div>
+                        <h3>Njoki Homestays</h3>
+                        <p>A homestay booking website built with TypeScript and deployed on Vercel — browse stays and get
+                            in touch with the host.</p>
+                        <div class="tags"><span>TypeScript</span><span>Web App</span><span>Vercel</span></div>
+                        <div class="project-links">
+                            <a href="https://njoki-homestays.vercel.app" target="_blank" rel="noopener">Live site ↗</a>
+                            <a href="https://github.com/SimonpeterW/njoki-homestays" target="_blank" rel="noopener">Code ↗</a>
+                        </div>
+                    </article>
+                    <article class="project spot tilt reveal">
+                        <div class="project-top">
+                            <span class="project-badge alt">Full-stack</span>
+                            <span class="mono muted">HTML</span>
+                        </div>
+                        <h3>HE — Health Management</h3>
+                        <p>A full-stack health management system for handling patients and records.</p>
+                        <div class="tags"><span>Full-stack</span><span>Healthcare</span></div>
+                        <div class="project-links">
+                            <a href="https://github.com/SimonpeterW/HE" target="_blank" rel="noopener">Code ↗</a>
+                        </div>
+                    </article>
+                    <article class="project spot tilt reveal">
+                        <div class="project-top">
+                            <span class="project-badge alt">UI → Code</span>
+                            <span class="mono muted">HTML</span>
+                        </div>
+                        <h3>Tech.Care Dashboard</h3>
+                        <p>A patient health dashboard implemented from an Adobe XD design spec.</p>
+                        <div class="tags"><span>UI/UX</span><span>Dashboard</span></div>
+                        <div class="project-links">
+                            <a href="https://github.com/SimonpeterW/Tech.Care" target="_blank" rel="noopener">Code ↗</a>
+                        </div>
+                    </article>
+                    <article class="project spot tilt reveal">
+                        <div class="project-top">
+                            <span class="project-badge alt">System</span>
+                            <span class="mono muted">In progress</span>
+                        </div>
+                        <h3>KCG Prod Management</h3>
+                        <p>A production management system for KCG.</p>
+                        <div class="tags"><span>Back-end</span><span>Database</span></div>
+                        <div class="project-links">
+                            <a href="https://github.com/SimonpeterW/Prod.management" target="_blank" rel="noopener">Code ↗</a>
+                        </div>
+                    </article>
+                    <article class="project spot tilt reveal">
+                        <div class="project-top">
+                            <span class="project-badge alt">Learning</span>
+                            <span class="mono muted">HTML</span>
+                        </div>
+                        <h3>SEE.plp E-learning Portal</h3>
+                        <p>Work from the PLP Academy software engineering programme, including an e-learning portal.</p>
+                        <div class="tags"><span>Web</span><span>Python</span><span>Databases</span></div>
+                        <div class="project-links">
+                            <a href="https://github.com/SimonpeterW/SEE.plp" target="_blank" rel="noopener">Code ↗</a>
+                        </div>
+                    </article>
+                    <a href="https://github.com/SimonpeterW" target="_blank" rel="noopener" class="project spot reveal project-more">
+                        <span class="more-plus">+</span>
+                        <h3>More on GitHub</h3>
+                        <p>Experiments, assignments and work in progress — new projects will be hosted soon. Stay tuned.</p>
+                        <span class="mono gradient-text">github.com/SimonpeterW →</span>
+                    </a>
                 </div>
-                <button type="submit" class="btn btn-primary">Send Message</button>
-            </form>
-        </div>
-    </section>
+
+                <div class="live-repos reveal">
+                    <div class="live-head">
+                        <span class="status-indicator"></span>
+                        <span class="mono">Live from GitHub — latest activity</span>
+                    </div>
+                    <div class="repo-list" id="repoList">
+                        <div class="repo skeleton"></div><div class="repo skeleton"></div><div class="repo skeleton"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!--CONTACT-->
+        <section id="contact" class="section contact">
+            <div class="container">
+                <div class="section-head reveal">
+                    <span class="section-index">04</span>
+                    <h2 class="section-title">Contact</h2>
+                    <div class="section-line"></div>
+                </div>
+
+                <div class="contact-grid">
+                    <div class="contact-cta reveal">
+                        <h3 class="big-cta">Let's build<br><span class="gradient-text">something great.</span></h3>
+                        <p>Ready to start your next project? Let's discuss how I can help bring your ideas to life.</p>
+                        <div class="social-links">
+                            <a href="https://www.linkedin.com/in/simonpeterfullstacksoftwareengineer/" target="_blank" rel="noopener">LinkedIn ↗</a>
+                            <a href="https://github.com/SimonpeterW" target="_blank" rel="noopener">GitHub ↗</a>
+                            <a href="https://www.codewars.com/users/simonpeter%20waithaka%20" target="_blank" rel="noopener">CodeWars ↗</a>
+                            <a href="https://leetcode.com/u/simon_peter/" target="_blank" rel="noopener">LeetCode ↗</a>
+                            <a href="https://x.com/simonpeterfa" target="_blank" rel="noopener">X / Twitter ↗</a>
+                            <a href="https://www.instagram.com/simonpeterfa/" target="_blank" rel="noopener">Instagram ↗</a>
+                        </div>
+                    </div>
+
+                    <form class="contact-form glass reveal" id="contactForm">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <input type="text" id="name" name="name" placeholder=" " required>
+                                <label for="name">Name</label>
+                            </div>
+                            <div class="form-group">
+                                <input type="email" id="email" name="email" placeholder=" " required>
+                                <label for="email">Email</label>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <input type="text" id="project" name="project" placeholder=" " required>
+                            <label for="project">Project Type (Web, AI, Mobile…)</label>
+                        </div>
+                        <div class="form-group">
+                            <textarea id="message" name="message" rows="5" placeholder=" " required></textarea>
+                            <label for="message">Tell me about your project…</label>
+                        </div>
+                        <button type="submit" class="btn btn-primary btn-block magnetic">Send Message <span class="arrow">→</span></button>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </main>
 
     <footer>
-        <div class="container">
-            <div class="social-links">
-                <a href="https://www.linkedin.com/in/simonpeterfullstacksoftwareengineer/" title="LinkedIn">in</a>
-                <a href="https://github.com/SimonpeterW" title="GitHub">🏀</a>
-                <a href="https://www.codewars.com/users/simonpeter%20waithaka%20" title="CodeWars">⚔️</a>
-                <a href="https://leetcode.com/u/simon_peter/" title="LeetCode">💻</a>
-                <a href="https://x.com/simonpeterfa" title="Twitter">🐦</a>
-                <a href="https://www.instagram.com/simonpeterfa/" title="Instagram">📷</a>
-            </div>
-            <p>&copy;2025 SimonPeter. All rights reserved.</p>
+        <div class="container footer-inner">
+            <span class="logo">&lt;Simon<span>.dev</span>/&gt;</span>
+            <p>&copy;<span id="year">2025</span> SimonPeter. All rights reserved. — Built with vanilla HTML, CSS &amp; JS.</p>
+            <a href="#home" class="mono">↑ back to top</a>
         </div>
     </footer>
-<!--i heard vanilla i thought i was js so this is optional -->
-<script src="script.js"></script>
+
+    <!-- command palette -->
+    <div class="palette" id="palette" hidden>
+        <div class="palette-box glass">
+            <input type="text" id="paletteInput" placeholder="Type a command or search…" autocomplete="off">
+            <ul id="paletteList"></ul>
+            <div class="palette-foot mono"><span>↑↓ navigate</span><span>↵ select</span><span>esc close</span></div>
+        </div>
+    </div>
+
+    <div class="toast" id="toast" role="status"></div>
+
+    <!--i heard vanilla i thought i was js so this is optional -->
+    <script src="script.js"></script>
 </body>
 
 </html>

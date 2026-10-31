@@ -72,16 +72,16 @@ A Husky pre-commit hook runs ESLint and Prettier on staged files.
 
 ## Deploying to Vercel + Neon
 
-1. Create a Postgres database on [Neon](https://neon.tech) (or Supabase) and copy its connection string.
-2. From your machine, create the tables and seed them:
-   ```bash
-   DATABASE_URL="postgresql://…" npm run db:push
-   DATABASE_URL="postgresql://…" npm run db:seed
-   ```
-3. Import the GitHub repo in [Vercel](https://vercel.com/new) and add the environment variables from
-   `.env.example`: `DATABASE_URL`, `NEXT_PUBLIC_SITE_URL`, `NEXTAUTH_URL` (your production URL),
-   `NEXTAUTH_SECRET`, `ADMIN_EMAIL`, `ADMIN_PASSWORD_HASH`, and optionally Resend, Cloudinary and GitHub OAuth keys.
-4. Deploy. The build runs `prisma generate` against Postgres automatically.
+1. Import the GitHub repo in [Vercel](https://vercel.com/new).
+2. In the project's **Storage** tab, add a **Neon** Postgres database — it sets `DATABASE_URL` for you
+   (or paste a connection string from Neon / Supabase yourself).
+3. Add the other environment variables from `.env.example`: `NEXT_PUBLIC_SITE_URL`, `NEXTAUTH_URL`
+   (both your production URL), `NEXTAUTH_SECRET`, `ADMIN_EMAIL`, `ADMIN_PASSWORD_HASH` (the raw hash, no
+   backslashes), and optionally Resend, Cloudinary and GitHub OAuth keys.
+4. Deploy. Vercel runs `npm run vercel-build`, which creates/updates the tables (`prisma db push`),
+   seeds the starter content **only if the database is empty**, then builds.
+
+To reset the starter content later: `npm run db:seed -- --force` (overwrites the seeded projects and skills).
 
 For GitHub login, create an OAuth app with callback URL `https://<your-domain>/api/auth/callback/github`
 and set `ADMIN_GITHUB_USERNAME` to the only account allowed in.

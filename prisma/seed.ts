@@ -277,6 +277,14 @@ const experience = [
 ];
 
 async function main() {
+  // Runs on every Vercel deploy, so never overwrite content edited in /admin.
+  // Pass --force to refresh the starter content anyway.
+  const force = process.argv.includes("--force");
+  if (!force && (await db.project.count()) > 0) {
+    console.log("Database already has content — skipping seed (use --force to refresh).");
+    return;
+  }
+
   for (const project of projects) {
     await db.project.upsert({ where: { slug: project.slug }, update: project, create: project });
   }

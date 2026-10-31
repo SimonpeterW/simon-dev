@@ -1,3 +1,4 @@
+import { siteConfig } from "@/lib/site";
 import { clsx, type ClassValue } from "clsx";
 import { twMerge } from "tailwind-merge";
 
@@ -63,6 +64,5 @@ export function isOptimizableImage(src: string): boolean {
 }
 
 export function absoluteUrl(path = "/"): string {
-  const base = process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000";
-  return new URL(path, base).toString();
+  return new URL(path, siteConfig.url).toString();
 }

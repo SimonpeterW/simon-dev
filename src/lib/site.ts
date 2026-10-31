@@ -1,3 +1,10 @@
+/** Explicit NEXT_PUBLIC_SITE_URL wins; on Vercel fall back to the project's production domain. */
+const siteUrl =
+  process.env.NEXT_PUBLIC_SITE_URL ??
+  (process.env.VERCEL_PROJECT_PRODUCTION_URL
+    ? `https://${process.env.VERCEL_PROJECT_PRODUCTION_URL}`
+    : "http://localhost:3000");
+
 export const siteConfig = {
   name: "SimonPeter",
   title: "SimonPeter — Software Engineer",
@@ -6,7 +13,7 @@ export const siteConfig = {
     "SimonPeter is a software engineer from Kisii, Kenya building full-stack products, AI & ML solutions and well-designed databases. Dream in code. Build in life.",
   slogan: "Dream in code. Build in life.",
   location: "Kisii, Kenya",
-  url: process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000",
+  url: siteUrl,
   avatar: "/images/simon-gdg.jpg",
   resume: "/simonpeter-cv.docx",
   promoVideo: "/media/promo.mp4",

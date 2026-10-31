@@ -3,6 +3,9 @@
   "version": "2.0.0",
   "private": true,
   "description": "SimonPeter portfolio - Next.js 14, Prisma, NextAuth.",
+  "engines": {
+    "node": "22.x"
+  },
   "scripts": {
     "dev": "next dev",
     "build": "node scripts/prisma.mjs generate && next build",

@@ -27,5 +27,11 @@ if (updated !== schema) {
 const args = process.argv.slice(2);
 if (args.length === 0) process.exit(0);
 
-const result = spawnSync("npx", ["prisma", ...args], { stdio: "inherit", shell: true });
+// Schema changes should bypass Neon's connection pooler; use the direct URL when one is provided.
+const env = { ...process.env };
+if (args[0] === "db" && args[1] === "push" && process.env.DATABASE_URL_UNPOOLED) {
+  env.DATABASE_URL = process.env.DATABASE_URL_UNPOOLED;
+}
+
+const result = spawnSync("npx", ["prisma", ...args], { stdio: "inherit", shell: true, env });
 process.exit(result.status ?? 1);

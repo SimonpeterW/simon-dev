@@ -1,0 +1,100 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 240 10% 6%;
+    --card: 0 0% 100%;
+    --card-foreground: 240 10% 6%;
+    --primary: 240 6% 10%;
+    --primary-foreground: 0 0% 98%;
+    --secondary: 240 5% 96%;
+    --secondary-foreground: 240 6% 10%;
+    /* muted-foreground keeps ≥ 4.5:1 contrast on the background (WCAG AA) */
+    --muted: 240 5% 96%;
+    --muted-foreground: 240 4% 38%;
+    --accent: 240 5% 94%;
+    --accent-foreground: 240 6% 10%;
+    --destructive: 0 72% 45%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 240 6% 90%;
+    --input: 240 6% 86%;
+    --ring: 262 83% 58%;
+    --radius: 0.85rem;
+    --brand-cyan: 189 94% 38%;
+    --brand-violet: 262 83% 58%;
+  }
+
+  .dark {
+    --background: 235 35% 4%;
+    --foreground: 230 30% 94%;
+    --card: 235 30% 7%;
+    --card-foreground: 230 30% 94%;
+    --primary: 230 30% 94%;
+    --primary-foreground: 235 35% 6%;
+    --secondary: 235 22% 12%;
+    --secondary-foreground: 230 30% 94%;
+    --muted: 235 22% 12%;
+    --muted-foreground: 230 14% 66%;
+    --accent: 235 22% 14%;
+    --accent-foreground: 230 30% 94%;
+    --destructive: 0 70% 55%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 235 20% 15%;
+    --input: 235 20% 18%;
+    --ring: 262 83% 66%;
+    --brand-cyan: 188 86% 53%;
+    --brand-violet: 262 83% 66%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  html {
+    @apply scroll-smooth;
+  }
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-feature-settings:
+      "rlig" 1,
+      "calt" 1;
+  }
+  ::selection {
+    @apply bg-brand-violet text-white;
+  }
+}
+
+@layer utilities {
+  .text-gradient {
+    @apply bg-gradient-to-r from-brand-cyan via-brand-violet to-fuchsia-500 bg-clip-text text-transparent;
+    background-size: 200% auto;
+  }
+  /* Faint engineering grid behind the hero */
+  .bg-grid {
+    background-image:
+      linear-gradient(hsl(var(--foreground) / 0.05) 1px, transparent 1px),
+      linear-gradient(90deg, hsl(var(--foreground) / 0.05) 1px, transparent 1px);
+    background-size: 56px 56px;
+    mask-image: radial-gradient(ellipse at 50% 0%, #000 30%, transparent 75%);
+  }
+  .glass {
+    @apply border bg-card/60 backdrop-blur-xl;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}

@@ -1,0 +1,91 @@
+// The provider is set automatically from DATABASE_URL by scripts/prisma.mjs:
+// `file:./dev.db` -> sqlite (local dev), `postgresql://...` -> postgresql (Neon / Supabase).
+// List fields (tech stack, tags) are stored as comma-separated strings so the
+// schema works on both providers — use the helpers in src/lib/utils.ts.
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model Project {
+  id          String   @id @default(cuid())
+  slug        String   @unique
+  title       String
+  summary     String
+  /// Markdown case study rendered on /projects/[slug]
+  content     String
+  coverImage  String?
+  techStack   String   @default("")
+  liveUrl     String?
+  repoUrl     String?
+  role        String?
+  year        Int?
+  featured    Boolean  @default(false)
+  published   Boolean  @default(true)
+  order       Int      @default(0)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  @@index([published, featured, order])
+}
+
+model Post {
+  id          String    @id @default(cuid())
+  slug        String    @unique
+  title       String
+  excerpt     String
+  /// Markdown body
+  content     String
+  coverImage  String?
+  tags        String    @default("")
+  published   Boolean   @default(false)
+  publishedAt DateTime?
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+
+  @@index([published, publishedAt])
+}
+
+model Skill {
+  id       String @id @default(cuid())
+  name     String
+  category String
+  /// 1–5 self-rated proficiency
+  level    Int    @default(3)
+  order    Int    @default(0)
+
+  @@unique([name, category])
+  @@index([category, order])
+}
+
+model Experience {
+  id           String  @id @default(cuid())
+  title        String
+  organization String
+  /// e.g. "Education", "Work", "Community", "Hackathon"
+  kind         String  @default("Work")
+  location     String?
+  startDate    String
+  endDate      String?
+  description  String
+  image        String?
+  order        Int     @default(0)
+}
+
+model ContactMessage {
+  id        String   @id @default(cuid())
+  name      String
+  email     String
+  message   String
+  ip        String?
+  read      Boolean  @default(false)
+  emailed   Boolean  @default(false)
+  createdAt DateTime @default(now())
+
+  @@index([read, createdAt])
+}
